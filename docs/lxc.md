@@ -11,7 +11,7 @@
 > 
 > Docker *использовал* LXC до версии 1.0 для создания изоляции от хост-системы. Позже Docker разработал собственную *замену* LXC под названием libcontainer. Вот почему Docker и LXC имеют так много *общего*.
 
-LXC использует технологии [[cgroups_namespaces#Контрольные группы|контрольных групп]] и [[cgroups_namespaces#Пространство имен|пространств имен]], входящие в ядро Linux начиная с версии 2.6.29.
+LXC использует технологии [[cgroups_namespaces#_1|контрольных групп]] и [[cgroups_namespaces#_2|пространств имен]], входящие в ядро Linux начиная с версии 2.6.29.
 
 **Установка:**
 ```bash
@@ -19,6 +19,7 @@ sudo apt install lxc lxc-templates
 ```
 
 **LXC хранит свои данные в следующих папках:**
+
 - `/var/lib/lxc/` - контейнеры, их настройки, ФС, снапшоты и так далее;
 - `/etc/lxc/` - прочие настройки;
 - `/usr/share/lxc/templates/` - доступные шаблоны;
@@ -31,29 +32,41 @@ sudo apt install lxc lxc-templates
 ## Управление контейнерами
 
 **Базовые команды:**
+
 - Проверка имеет ли Linux необходимую конфигурацию ядра:
+
 ```bash
 sudo lxc-checkconfig
 ```
+
 - Создание контейнера (прим. Ubuntu 22.04):
+
 ```bash
 sudo lxc-create -n container_name -t download -- -d ubuntu -r jammy -a amd64
 ```
 `где: -n - имя контейнера, -t - шаблон для настройки контейнера, -d - дистрибутив, -r - релиз дистрибутива, -a - архитектура дистрибутива`
+
 - Запуск контейнера:
+
 ```bash
 sudo lxc-start -n container_name
 ```
+
 - Вывести информацию о контейнере:
+
 ```bash
 sudo lxc-info -n container_name
 ```
+
 - Вывести информацию обо всех контейнерах:
+
 ```bash
 sudo lxc-ls -f
 ```
 `где: -f - подробный вывод`
+
 - Подключение к оболочке контейнера:
+
 ```bash
 sudo lxc-attach -n container_name
 ```
@@ -61,30 +74,43 @@ sudo lxc-attach -n container_name
 > Информацию о *дистрибутиве контейнера* можно увидеть если вывести в консоль содержание следующего файла: `cat /etc/os-release`.
 
 - Остановка контейнера:
+
 ```bash
 sudo lxc-stop -n container_name
 ```
+
 - Удаление контейнера (контейнер должен быть остановлен):
+
 ```bash
 sudo lxc-destroy -n container_name
 ```
+
 - Клонирование контейнера (контейнер должен быть остановлен):
+
 ```bash
 sudo lxc-copy -n container_name -N new_container_name
 ```
+
 - Создание снапшота контейнера:
+
 ```bash
 sudo lxc-snapshot -n container_name
 ```
+
 - Просмотреть созданные снапшоты:
+
 ```bash
 sudo lxc-snapshot -n container_name -L
 ```
+
 - Восстановить систему из снапшота:
+
 ```bash
 sudo lxc-snapshot -n container_name -r snap_name
 ```
+
 - Удалить снапшот:
+
 ```bash
 sudo lxc-snapshot -n container_name -d snap_name
 ```
@@ -108,6 +134,7 @@ sudo lxc-snapshot -n container_name -d snap_name
 
 - *Перезапускаем* сетевой сервис lxc командой `service lxc-net restart`.
 - *Проверяем* файл настроек контейнера `/var/lib/lxc/container_name/config`. В нем должны быть следующие настройки сети:
+
 ```ini
 # Network configuration
 lxc.net.<num>.type = veth
@@ -115,6 +142,7 @@ lxc.net.<num>.link = lxcbr0
 lxc.net.<num>.flags = up
 lxc.net.<num>.hwaddr = <mac_address>
 ```
+
 - Если пункт с мак-адресом устройства *отсутствует*, выполняем данный шаг, иначе пропускаем. Запускаем контейнер, дожидаемся пока он получит указанный нами ip адрес, и выводим содержимое файла `/var/lib/misc/dnsmasq.lxcbr0.leases`. Находим строчку с подключением устройства к указанному нами ip адресу, второе значение в строчке, временный мак-адрес подключенного устройства. Его надо *внести* в конфиг выше. Останавливаем контейнер.
 - Включаем контейнер с *постоянным* ip адресом!
 
@@ -122,9 +150,10 @@ lxc.net.<num>.hwaddr = <mac_address>
 
 ### Настройки статического IP без помощи DHCP
 
-- *Создаем и настраиваем* [[linux_network#Создание и настройка моста|мост]].
+- *Создаем и настраиваем* [[linux_network#_1|мост]].
 - *Создаем* контейнер.
 - *Проверяем* файл настроек контейнера `/var/lib/lxc/container_name/config`. В нем должны быть следующие настройки сети:
+
 ```ini
 # Network configuration
 lxc.net.<num>.type = veth

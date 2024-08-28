@@ -2,7 +2,7 @@
 ***
 [Сайт](https://squidfunk.github.io/mkdocs-material/) с настройками темы Material для MkDock.
 ***
-## Статьи по темам:
+## Статьи по темам
 
 - [[linux|Linux]]
 - [[apps|Apps]]

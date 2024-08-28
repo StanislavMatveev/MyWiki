@@ -8,9 +8,9 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: light green
-      accent: purple
+      accent: light blue
       toggle:
-        icon: material/weather-sunny
+        icon: material/weather-night
         name: Switch to dark mode
 
     # Dark mode
@@ -19,7 +19,7 @@ theme:
       primary: teal
       accent: indigo
       toggle:
-        icon: material/weather-night
+        icon: material/weather-sunny
         name: Switch to light mode
 
 # Extensions
@@ -47,13 +47,15 @@ markdown_extensions:
 
   - toc:
       permalink: true
+      title: On this page
+      toc_depth: 4
 
 plugins:
   - search:
       lang:
         - en
         - ru
-  - roamlinks
+  #- roamlinks
 
 extra_javascript:
   - javascripts/mathjax.js
