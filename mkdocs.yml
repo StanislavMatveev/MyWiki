@@ -45,6 +45,9 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
+  features:
+    - navigation.top
+
   - toc:
       permalink: true
       title: On this page
@@ -56,9 +59,8 @@ plugins:
         - ru
         - en
   - roamlinks
-
-hide:
-  - navigation
+  - navigation:
+      - enabled: false
 
 extra_javascript:
   - javascripts/mathjax.js
