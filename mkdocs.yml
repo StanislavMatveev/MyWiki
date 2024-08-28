@@ -1,9 +1,8 @@
 site_name: База знаний LinAdm
 
 theme:
-    features:
-      - navigation.path
-      - navigation.top
+    hide:
+      - navigation
     name: 'material'
     palette:
 
