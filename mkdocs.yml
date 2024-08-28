@@ -55,7 +55,7 @@ plugins:
       lang:
         - en
         - ru
-  #- roamlinks
+  - roamlinks
 
 extra_javascript:
   - javascripts/mathjax.js
