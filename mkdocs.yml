@@ -1,4 +1,4 @@
-site_name: База знаний
+site_name: База знаний LinAdm
 
 theme:
     name: 'material'
@@ -7,19 +7,19 @@ theme:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: green
-      accent: indigo
+      primary: light green
+      accent: purple
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/weather-sunny
         name: Switch to dark mode
 
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: green
-      accent: blue
+      primary: teal
+      accent: indigo
       toggle:
-        icon: material/toggle-switch
+        icon: material/weather-night
         name: Switch to light mode
 
 # Extensions
@@ -49,16 +49,11 @@ markdown_extensions:
       permalink: true
 
 plugins:
-  - search
+  - search:
+      lang:
+        - en
+        - ru
   - roamlinks
-  - blog
-  - rss:
-      match_path: blog/posts/.* 
-      date_from_meta:
-        as_creation: date
-      categories:
-        - categories
-        - tags
 
 extra_javascript:
   - javascripts/mathjax.js
