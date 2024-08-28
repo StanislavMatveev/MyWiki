@@ -1,3 +1,10 @@
+---
+
+---
+---
+hide:
+  - nvigation
+---
 # Главная страница
 ***
 [Сайт](https://squidfunk.github.io/mkdocs-material/) с настройками темы Material для MkDock.

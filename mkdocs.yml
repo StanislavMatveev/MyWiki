@@ -2,6 +2,8 @@ site_name: База знаний LinAdm
 
 theme:
     name: 'material'
+    features:
+      - navigations.top
     palette:
 
     # Light mode
@@ -56,8 +58,6 @@ plugins:
         - ru
         - en
   - roamlinks
-  - navigation:
-      - enabled: false
 
 extra_javascript:
   - javascripts/mathjax.js
