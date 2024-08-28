@@ -53,9 +53,12 @@ markdown_extensions:
 plugins:
   - search:
       lang:
-        - en
         - ru
+        - en
   - roamlinks
+
+hide:
+  - navigation
 
 extra_javascript:
   - javascripts/mathjax.js
