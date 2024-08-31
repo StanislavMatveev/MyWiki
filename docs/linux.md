@@ -14,6 +14,7 @@
 > - [[linux_diagnistics|Диагностика железа на Linux системах]]
 > - [[cgroups_namespaces|Контрольные группы и пространство имен в Linux]]
 > - [[linux_network|Настройка и работа с сетью в Linux]]
+> - [[linux_build_packages|Сборка пакетов из исходников в Linux]]
 > ***
 > - [[linux_directory_structure|Структура директорий в Linux системах]]
 
