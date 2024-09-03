@@ -70,5 +70,4 @@ brctl addif brname interface_name
 brctl delif brname interface_name
 ```
 
-[[linux_network#linux|^ В начало]]
 ***
