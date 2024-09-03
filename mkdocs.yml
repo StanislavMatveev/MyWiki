@@ -2,6 +2,8 @@ site_name: База знаний LinAdm
 
 theme:
     name: 'material'
+    features:
+      - navigation.top
     palette:
 
     # Light mode
