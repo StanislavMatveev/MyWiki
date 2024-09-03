@@ -44,7 +44,6 @@ inventory=./inventory.yml
 > ansible-config init --disabled > ansible.cfg
 > ```
 
-[[ansible#ansible|^ В начало]]
 ***
 ## Inventory
 
@@ -118,7 +117,6 @@ containers:    # Метагруппа
 - `ansible_ssh_private_key_file` - путь до файла приватного ssh ключа.
 - `ansible_become` - выполнять команды с повышением привилегий.
 
-[[ansible#ansible|^ В начало]]
 ***
 ## Простые команды в Ansible. Module
 
@@ -176,7 +174,6 @@ ansible all -m copy -a "src=test.txt dest=/root/test.txt"
 ansible apache_hosts -m service -a "name=apache2 state=restarted"
 ```
 
-[[ansible#ansible|^ В начало]]
 ***
 ## Playbooks
 
@@ -243,7 +240,6 @@ ansible-playbook -i inventory.yml playbook.yml
 ansible-playbook -i inventory.yml --check playbook.yml
 ```
 
-[[ansible#ansible|^ В начало]]
 ***
 ## Roles & Ansible Galaxy
 
@@ -346,5 +342,4 @@ ansible-galaxy init nginx_role
         msg: "after we ran our role"
 ```
 
-[[ansible#ansible|^ В начало]]
 ***

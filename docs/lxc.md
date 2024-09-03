@@ -28,7 +28,6 @@ sudo apt install lxc lxc-templates
 
 **[Сайт](https://images.linuxcontainers.org/) с образами.** 
 
-[[lxc#LXC|^ В начало]]
 ***
 ## Управление контейнерами
 
@@ -116,7 +115,6 @@ sudo lxc-snapshot -n container_name -r snap_name
 sudo lxc-snapshot -n container_name -d snap_name
 ```
 
-[[lxc#LXC|^ В начало]]
 ***
 ## Настройки контейнеров
 
@@ -169,5 +167,4 @@ lxc.net.<num>.hwaddr = <mac_address>    # По необходимости
 
 - ~~Включаем контейнер с *постоянным* ip адресом!~~ На данный момент не работает, не хватает нескольких настроек.
 
-[[lxc#LXC|^ В начало]]
 ***
