@@ -1,0 +1,6 @@
+ansible_user: Admin
+ansible_httpapi_pass: testPASS
+ansible_network_os: community.zabbix.zabbix
+ansible_connection: httpapi
+ansible_httpapi_port: 8080
+ansible_zabbix_url_path: ""

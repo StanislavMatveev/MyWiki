@@ -1,0 +1,38 @@
+---
+### tasks file for configure_cluster
+
+- name: Authenticating nodes
+  command: "pcs host auth {{ nodes_list | join(' ') }} -u hacluster -p {{ hacluster_pass }}"
+
+- name: Creating cluster
+  command: "pcs cluster setup --force --enable --start {{ cluster_name }} {{ nodes_list | join(' ') }}"
+ 
+- name: Turning off STONITH
+  command: pcs property set stonith-enabled=false
+
+- name: Turning off quorum policy (if nodes <= 2)
+  command: pcs property set no-quorum-policy=ignore
+  when: nodes_list | length <= 2
+
+- name: Creating virtual IP resources
+  command: "pcs resource create virtIP_{{ ip_index + 1 }} ocf:heartbeat:IPaddr2 ip={{ item }} cidr_netmask=24 op monitor interval=30s" 
+  loop: "{{ virtual_ip_list }}"
+  loop_control:
+    index_var: ip_index
+
+- name: Creating a variable with virtual ip names to create a group (if virtual ip > 1)
+  set_fact:
+    ip_names: "{{ ip_names | default([]) + ['virtIP_' + (ip_index + 1) | string] }}"
+  loop: "{{ virtual_ip_list }}"
+  loop_control:
+    index_var: ip_index
+  when: virtual_ip_list | length > 1
+
+- name: Creating a group for virtual ips (if virtual ip > 1)
+  command: "pcs resource group add virtIP_group {{ ip_names | join(' ') }}"
+  when: virtual_ip_list | length > 1
+
+- name: Restrict the last node from resource migration (if nodes > 2)
+  command: "pcs constraint location regexp%.* avoids {{ nodes_list[-1] }}"
+  when: nodes_list | length > 2
+

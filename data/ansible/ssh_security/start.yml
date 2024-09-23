@@ -1,0 +1,3 @@
+- hosts: hosts_for_ssh
+  roles:
+    - ssh_security_setting

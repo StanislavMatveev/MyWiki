@@ -1,0 +1,8 @@
+nodes:
+  hosts:
+    node_1:
+      ansible_host: 10.0.3.100
+    node_2:
+      ansible_host: 10.0.3.101
+    node_3:
+      ansible_host: 10.0.3.102

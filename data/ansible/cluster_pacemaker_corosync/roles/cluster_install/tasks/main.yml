@@ -1,0 +1,50 @@
+---
+### tasks file for cluster_install
+
+# Preparing
+
+- name: Adding hosts in /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    insertafter: "EOF"
+    line: "{{ hostvars[item]['ansible_host'] }} {{ item }}"
+  loop: "{{ nodes_list }}" 
+
+# Installation
+
+- name: Installing main packages
+  apt:
+    name: "{{ packages_for_install }}"
+    update_cache: yes
+
+- name: Make sure the service unit is enabled
+  systemd_service:
+    name: "{{ item }}"
+    enabled: true
+  loop:
+    - pacemaker
+    - corosync
+    - pcsd
+
+- name: Changing password for "hacluster" user
+  user:
+    name: hacluster
+    password: "{{ hacluster_pass | password_hash('sha512') }}"
+
+- name: Make sure the service unit is running
+  systemd_service:
+    name: pcsd
+    state: started
+
+# Configuration
+
+- name: Configuring cluster
+  import_tasks: configure_cluster.yml
+  when: inventory_hostname == nodes_list[0]
+
+# Installation end
+
+- name: Checking the configurations and if they are successful, restarting corosync service
+  command: pcs cluster verify --full
+  notify: Restart corosync service
+

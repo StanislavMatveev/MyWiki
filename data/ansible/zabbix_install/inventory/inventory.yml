@@ -1,0 +1,18 @@
+zabbix_servers:
+  hosts:
+    zabbix_server_1:
+      ansible_host: 192.168.1.116
+
+zabbix_agents:
+  hosts:
+    zabbix_agent_1:
+      ansible_host: 10.0.3.20
+    zabbix_agent_2:
+      ansible_host: 10.0.3.21
+
+zabix_all:
+  children:
+    zabbix_servers:
+    zabbix_agents:
+  vars:
+    ansible_ssh_private_key_file: /root/.ssh/id_rsa

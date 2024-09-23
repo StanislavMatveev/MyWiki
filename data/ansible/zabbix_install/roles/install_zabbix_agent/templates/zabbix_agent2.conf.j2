@@ -1,0 +1,10 @@
+PidFile=/var/run/zabbix/zabbix_agent2.pid
+LogFile=/var/log/zabbix/zabbix_agent2.log
+LogFileSize=200
+Server={{ zabbix_servers | join(',') }}
+ServerActive={{ zabbix_servers | join(';') }}
+Hostname={{ inventory_hostname }}
+TLSConnect=psk
+TLSAccept=psk
+TLSPSKFile=/etc/zabbix/psk
+TLSPSKIdentity={{ zabbix_psk_identity }}

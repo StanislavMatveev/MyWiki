@@ -1,0 +1,12 @@
+---
+# vars file for install_zabbix_agent
+zabbix_servers: "{{ groups['zabbix_servers'] | map('extract', hostvars, 'ansible_host') }}"
+
+zabbix_agent_catalogs:
+  - /etc/zabbix/zabbix_agentd.conf.d
+  - /etc/zabbix/zabbix_agentd.conf
+  - /etc/systemd/system/zabbix-agent.service.d
+  - /usr/local/etc/zabbix_agentd.conf.d
+  - /usr/local/etc/zabbix_agentd.conf
+  - /usr/local/sbin/zabbix_agentd
+  - /usr/local/etc/rc.d/zabbix_agentd
