@@ -10,6 +10,14 @@
     line: "{{ hostvars[item]['ansible_host'] }} {{ item }}"
   loop: "{{ nodes_list }}" 
 
+- name: Disabling systemd services for use it in resources
+  systemd_service:
+    name: "{{ item }}"
+    state: stopped
+    enabled: false
+  loop: "{{ services_list }}"
+  ignore_errors: yes
+
 # Installation
 
 - name: Installing main packages

@@ -28,9 +28,12 @@
     index_var: ip_index
   when: virtual_ip_list | length > 1
 
-- name: Creating a group for virtual ips (if virtual ip > 1)
-  command: "pcs resource group add virtIP_group {{ ip_names | join(' ') }}"
-  when: virtual_ip_list | length > 1
+- name: Creating resources for systemd services
+  command: "pcs resource create {{ item }} systemd:{{ item }}"
+  loop: "{{ services_list }}"
+
+- name: Creating a group for resources
+  command: "pcs resource group add default_group {{ ip_names | default(['virtIP_1']) | join(' ') }} {{ services_list | join(' ') }}"
 
 - name: Restrict the last node from resource migration (if nodes > 2)
   command: "pcs constraint location regexp%.* avoids {{ nodes_list[-1] }}"
