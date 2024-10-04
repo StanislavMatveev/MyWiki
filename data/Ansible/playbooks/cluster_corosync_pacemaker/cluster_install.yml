@@ -1,0 +1,3 @@
+- hosts: nodes
+  roles:
+    - cluster_corosync_pacemaker_install

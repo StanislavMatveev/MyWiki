@@ -1,3 +1,0 @@
-- hosts: vpn_hosts
-  roles:
-    - add_ipv6
