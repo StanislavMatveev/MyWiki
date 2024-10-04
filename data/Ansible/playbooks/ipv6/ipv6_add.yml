@@ -1,0 +1,3 @@
+- hosts: hosts_for_ipv6
+  roles:
+    - ipv6_add

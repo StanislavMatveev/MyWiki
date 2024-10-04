@@ -1,0 +1,5 @@
+pci_hosts:
+  hosts:
+    pci_wh:
+      ansible_host: 10.0.3.100
+      ansible_user: root

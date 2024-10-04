@@ -53,6 +53,6 @@
 # Installation end
 
 - name: Checking the configurations and if they are successful, restarting corosync service
-  command: pcs cluster verify --full
+  command: "pcs cluster verify --full"
   notify: Restart corosync service
 

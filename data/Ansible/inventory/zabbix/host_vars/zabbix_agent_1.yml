@@ -1,1 +1,2 @@
+# Zabbix PSK identity for config file
 zabbix_psk_identity: "PSK 001"

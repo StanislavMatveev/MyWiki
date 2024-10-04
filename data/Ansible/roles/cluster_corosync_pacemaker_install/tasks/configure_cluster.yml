@@ -8,10 +8,10 @@
   command: "pcs cluster setup --force --enable --start {{ cluster_name }} {{ nodes_list | join(' ') }}"
  
 - name: Turning off STONITH
-  command: pcs property set stonith-enabled=false
+  command: "pcs property set stonith-enabled=false"
 
 - name: Turning off quorum policy (if nodes <= 2)
-  command: pcs property set no-quorum-policy=ignore
+  command: "pcs property set no-quorum-policy=ignore"
   when: nodes_list | length <= 2
 
 - name: Creating virtual IP resources

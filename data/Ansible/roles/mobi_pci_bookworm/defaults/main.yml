@@ -1,0 +1,3 @@
+---
+# defaults file for mobi_pci_buster
+become: yes
