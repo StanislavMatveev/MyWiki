@@ -104,4 +104,4 @@
     tls_psk_identity: "{{ zabbix_psk_identity }}"
     tls_psk: "{{ random_string_for_psk.stdout }}"
   delegate_to: "{{ item }}"
-  loop: "{{ groups['zabbix_servers'] }}"
+  loop: "{{ zabbix_servers }}"

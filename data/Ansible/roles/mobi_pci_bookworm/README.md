@@ -1,3 +1,5 @@
+# Изменения:
+
 - В pci.yml добавил роль mobi_pci_bookworm.
 
 - В /mobi_pci_bookworm/vars/main.yml заменил libpam-cracklib на libpam-pwquality (в Debian 12 заменили пакет).
