@@ -362,7 +362,6 @@ ansible-galaxy collection init my_namespace.my_collection
 ansible-galaxy collection install my_namespace.my_collection
 ```
 
-[[app_ansible#ansible|^ В начало]]
 ***
 ## Molecule
 
@@ -376,11 +375,11 @@ ansible-galaxy collection install my_namespace.my_collection
 - Python >= 3.10
 
 *Установка:*
+
 ```bash
 # Ubuntu
 apt install python3-pip libssl-dev
 pip3 install ansible-dev-tools
 ```
 
-[[app_ansible#ansible|^ В начало]]
 ***
