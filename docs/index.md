@@ -6,4 +6,5 @@
 
 - [[linux|Linux]]
 - [[apps|Apps]]
+- [[tests|Tests]]
 ***

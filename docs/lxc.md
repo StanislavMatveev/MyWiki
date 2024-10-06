@@ -91,7 +91,7 @@ sudo lxc-destroy -n container_name
 sudo lxc-copy -n container_name -N new_container_name
 ```
 
-- Создание снапшота контейнера:
+- Создание снапшота контейнера (контейнер должен быть остановлен):
 
 ```bash
 sudo lxc-snapshot -n container_name

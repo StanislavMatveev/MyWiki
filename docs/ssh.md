@@ -109,7 +109,7 @@ scp -r <path_to_dir> <user_name>@<server_address>:<path_for_save>
 - Копирование файла с SSH-сервера в текущую директорию:
 
 ```bash
-scp <user_name>@<server_address>:<path_to_file>
+scp <user_name>@<server_address>:<path_to_file> ./
 ```
 
 - Копирование файла с SSH-сервера в указанную директорию:
